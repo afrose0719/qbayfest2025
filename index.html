@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECIPLAN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Light background similar to image */
+        }
+        /* Custom scrollbar for the sidebar */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        /* Style for code blocks */
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            position: relative; /* For copy button positioning */
+        }
+        code {
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+        pre:hover .copy-btn {
+            opacity: 1;
+        }
+        /* Styles for active sidebar link */
+        .nav-link.active {
+            background-color: #e0f2fe; /* light blue background */
+            color: #1d4ed8; /* dark blue text */
+            font-weight: 600; /* semi-bold */
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="bg-gradient-to-r from-pink-600 to-pink-800 text-white p-4 shadow-xl transform transition-all duration-300 hover:scale-[1.01]">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="./images/Reciplan.png" alt="food Logo" class="h-11 w-11 rounded-full border-2 border-white animate-pulse">
+                <h1 class="text-2xl font-bold tracking-wide">RECIPLAN</h1>
+            </div>
+            <div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex flex-1">
+        <aside class="w-64 bg-white p-4 shadow-lg overflow-y-auto sidebar-scroll">
+            <nav>
+                <ul>
+                    <li class="mb-2">
+                        <a href="#getting-started" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">Getting Started</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#features" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">Features</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#next-release" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">Next Release</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#architecture" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">Architecture</a>
+                       
+                    </li>
+                    <li class="mb-2">
+                        <a href="#setup" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">Setup</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#about-the-project" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">About the project</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#faqs" class="nav-link block py-2 px-3 text-gray-700 hover:bg-gray-100 hover:text-blue-600 rounded-md transition duration-200 ease-in-out font-medium">FAQs</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8 overflow-y-auto">
+
+            <div id="getting-started" class="content-panel max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h1 class="text-4xl font-extrabold text-gray-800 mb-4">RECIPLAN</h1>
+                <p class="text-lg text-gray-600 mb-8">"Turn What You Have Into What You Crave."</p>
+
+                <div class="flex justify-center items-center py-8">
+                    <img src="./images/Reciplan.png" alt="Reciplan Logo" class="h-60 w-60 rounded-full border-2 border-white animate-pulse">
+                </div>
+
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">What is Reciplan</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    ReciPlan is an innovative, open-source Salesforce application designed to empower individuals with AI-driven recipe generation and comprehensive meal management capabilities. Leveraging the robust Salesforce platform, ReciPlan integrates advanced AI functionalities (likely via external services or Apex-driven integrations) to provide personalized recipe suggestions based on available ingredients, dietary preferences, and real-time food inventory.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-8">
+                    The project aims to demonstrate how Salesforce can be extended beyond traditional CRM to solve everyday problems, foster healthier eating habits, reduce food waste, and streamline culinary processes for a variety of users. Being open-source, ReciPlan encourages community contributions, allowing developers to extend its functionality, integrate with new AI models, or tailor it to specific industry needs.
+                </p>
+
+                <div class="flex justify-center mb-12">
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md border border-blue-200 flex flex-col items-center text-center w-80">
+                        <h4 class="text-xl font-semibold text-blue-800 mb-2">Open source</h4>
+                        <p class="text-gray-700 mb-4">The source code is available in GitHub and contributions are welcome!</p>
+                        <a href="https://github.com/SalesforceLabs/LightningWebChartJS" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="features" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">ReciPlan: Your AI-Powered Personal Culinary Assistant</h2>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    ReciPlan is an innovative and intelligent mobile and web application designed to transform the way individuals approach cooking and meal preparation. At its heart, ReciPlan leverages cutting-edge Artificial Intelligence to provide personalized recipe generation, making healthy, delicious, and resource-efficient cooking accessible to everyone. The project aims to simplify meal planning, reduce food waste by utilizing available ingredients, and inspire culinary creativity through intuitive and interactive features.
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Core AI-Powered Recipe Generation</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    The central feature of ReciPlan is its sophisticated AI recipe generation engine. This engine takes various user inputs and crafts unique, tailored recipes:
+                </p>
+                <ul class="list-disc list-inside space-y-3 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li>
+                        <strong class="font-semibold">Intelligent Ingredient-Based Recipes:</strong>
+                        Users simply input the ingredients they currently have on hand. The AI processes this list, cross-referencing it with a vast database of culinary knowledge to propose recipes that maximally utilize the provided items. This is a core mechanism for reducing food waste.
+                    </li>
+                    <li>
+                        <strong class="font-semibold">Personalized Dietary & Preference Customization:</strong>
+                        The AI adapts its recipe suggestions based on a comprehensive range of user-defined dietary restrictions (e.g., Vegetarian, Vegan, Gluten-Free, Keto, Dairy-Free, Nut-Free) and meal preferences (e.g., cuisine type, cooking style, quick meals). This ensures that every generated recipe aligns perfectly with the user's health goals and tastes.
+                    </li>
+                    <li>
+                        <strong class="font-semibold">Dynamic Meal Type & Serving Size Adjustments:</strong>
+                        Users can specify the desired meal type (Breakfast, Lunch, Dinner, Snack, Dessert) and the number of servings needed. The AI adjusts the ingredient quantities and recipe complexity accordingly, making it suitable for individuals, couples, or families.
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Intuitive Multi-Modal Ingredient Input</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    ReciPlan offers revolutionary ways to input ingredients, moving beyond traditional manual entry for ultimate convenience:
+                </p>
+                <ul class="list-disc list-inside space-y-3 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li>
+                        <strong class="font-semibold">Voice Recognition:</strong>
+                        Users can simply speak the names of the ingredients they have. The app's integrated voice recognition (Speech-to-Text) technology accurately transcribes the spoken words, converting them into a structured list that the AI can understand. This hands-free input is perfect for when you're in the kitchen.
+                    </li>
+                    <li>
+                        <strong class="font-semibold">Image Upload & Recognition:</strong>
+                        A groundbreaking feature allows users to take a picture of their available ingredients. The app utilizes advanced Image Recognition AI (e.g., computer vision models) to identify and list the food items detected in the photograph. This streamlines the inventory process, making it incredibly fast and efficient.
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Comprehensive Recipe Management & Discovery</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    Beyond generation, ReciPlan empowers users to explore, manage, and engage with culinary content:
+                </p>
+                <ul class="list-disc list-inside space-y-3 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li>
+                        <strong class="font-semibold">Extensive Ingredient Search:</strong>
+                        Users can search for specific ingredients (e.g., "chicken," "broccoli," "lentils") to discover a wide array of recipes that feature them. This is ideal for when you have a core ingredient and are looking for inspiration.
+                    </li>
+                    <li>
+                        <strong class="font-semibold">Detailed Step-by-Step Instructions:</strong>
+                        Every generated or discovered recipe comes with clear, concise, and easy-to-follow preparation steps, ensuring even novice cooks can achieve great results.
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Immersive Cooking Experience & Assistance</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    ReciPlan transforms the cooking process itself with interactive and assistive features:
+                </p>
+                <ul class="list-disc list-inside space-y-3 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li>
+                        <strong class="font-semibold">Interactive Voice Assistant for Cooking:</strong>
+                        A dedicated voice assistant can read aloud the recipe steps, allowing users to cook hands-free without needing to constantly look at their screen. This is invaluable for maintaining hygiene and focus during cooking.
+                    </li>
+                    <li>
+                        <strong class="font-semibold">Voice Commands & Controls:</strong>
+                        Users have full control over the voice assistant's playback, with intuitive voice commands like "Start," "Stop," "Next Step," "Previous Step," and "Repeat" alongside on-screen buttons, providing a truly interactive and convenient cooking guide.
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">Integrated Multimedia & Learning Hub</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    ReciPlan extends its utility by integrating with popular multimedia platforms, fostering a rich learning environment:
+                </p>
+                <ul class="list-disc list-inside space-y-3 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li>
+                        <strong class="font-semibold">YouTube Integration for Culinary Content:</strong>
+                        Users can create and manage personalized playlists of their favorite cooking videos directly within the app, centralizing their go-to visual guides.
+                    </li>
+                    <li>
+                        <strong class="font-semibold">YouTube Channel Subscriptions:</strong>
+                        The app allows users to subscribe to cooking-related YouTube channels, providing a curated feed of new content and allowing them to follow their favorite chefs and food bloggers without leaving ReciPlan.
+                    </li>
+                </ul>
+            </div>
+
+            <div id="next-release" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 class="text-4xl font-extrabold text-gray-800 mb-6">What's Cooking Next: ReciPlan's Upcoming Features - A Detailed Explanation</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                    We are thrilled to give you an in-depth look at the innovative features slated for ReciPlan's next major release. These enhancements are designed to make your culinary journey even more connected, health-conscious, and convenient, truly embodying our vision of a comprehensive personal cooking assistant.
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">1. WhatsApp Notification Integration</h3>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2">Functionality:</h4>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    This feature will seamlessly connect ReciPlan's core functionalities with your WhatsApp account, leveraging the ubiquitous messaging platform for real-time, actionable alerts. Users will have the option to opt-in for various types of notifications, ensuring they receive only the information most relevant to them. The integration will utilize secure API endpoints to send messages directly from ReciPlan to your designated WhatsApp number.
+                </p>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2 mt-6">Benefits:</h4>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Enhanced Convenience:</strong> Receive critical updates without needing to open the ReciPlan app, making information readily accessible during busy moments or while away from the screen.</li>
+                    <li><strong class="font-semibold">Improved Meal Planning Adherence:</strong> Timely reminders can significantly boost consistency in following meal plans and preparing meals on schedule.</li>
+                    <li><strong class="font-semibold">Reduced Food Waste (Potential):</strong> Alerts for expiring ingredients (if integrated with an advanced inventory feature) or upcoming meal prep can help users utilize food before it spoils.</li>
+                    <li><strong class="font-semibold">Streamlined Collaboration:</strong> Easily share auto-generated shopping lists or even specific recipes with family members or housemates who are also on WhatsApp, simplifying coordinated grocery runs or meal prep.</li>
+                    <li><strong class="font-semibold">Interactive Cooking Assistance:</strong> Imagine receiving step-by-step cooking instructions via WhatsApp, allowing for a truly hands-free cooking experience when you don't want to touch your device.</li>
+                </ul>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2 mt-6">User Experience:</h4>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    Users would typically enable this feature within ReciPlan's settings, linking their WhatsApp number. They could then customize notification preferences, such as opting to receive reminders 30 minutes before a planned dinner, alerts when a saved recipe's key ingredient is low, or quick links to shopping lists shared by other household members.
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">2. Integrated Health Tracker</h3>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2">Functionality:</h4>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    The Health Tracker aims to transform ReciPlan from just a recipe generator into a comprehensive dietary wellness companion. It will integrate nutritional data directly into the recipe generation and meal planning process. This involves:
+                </p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Nutritional Database:</strong> A robust backend database containing detailed nutritional information for a vast array of ingredients and common dishes.</li>
+                    <li><strong class="font-semibold">AI-Driven Analysis:</strong> When a recipe is generated or selected, the AI will calculate its nutritional profile (calories, macronutrients, key vitamins/minerals) based on ingredients and portion sizes.</li>
+                    <li><strong class="font-semibold">Goal Setting & Monitoring:</strong> Users will be able to set personal dietary goals (e.g., daily calorie targets, protein intake, limits on sugar/fat, specific allergen avoidance). The tracker will then monitor their intake against these goals for meals logged through ReciPlan.</li>
+                    <li><strong class="font-semibold">Historical Data & Trends:</strong> The system will store logged meal data, allowing users to view their nutritional history, identify patterns, and track progress over time through intuitive charts and summaries.</li>
+                </ul>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2 mt-6">Benefits:</h4>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Informed Food Choices:</strong> Empower users to understand the nutritional impact of their meals, leading to healthier eating habits.</li>
+                    <li><strong class="font-semibold">Personalized Wellness:</strong> Tailor recipe suggestions not just by ingredients and preferences, but also by health goals, directly contributing to weight management, athletic performance, or managing specific health conditions.</li>
+                    <li><strong class="font-semibold">Allergen Safety:</strong> Critical for users with allergies or sensitivities, providing immediate alerts for potentially harmful ingredients in recipes.</li>
+                    <li><strong class="font-semibold">Motivation & Accountability:</strong> Visual progress reports can serve as a powerful motivator, helping users stay accountable to their dietary objectives.</li>
+                    <li><strong class="font-semibold">Reduced Reliance on Multiple Apps:</strong> Consolidate recipe management and basic health tracking into one platform.</li>
+                </ul>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2 mt-6">User Experience:</h4>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    Within their ReciPlan profile, users would input their health goals, dietary restrictions, and allergies. When generating a recipe, they would see an immediate nutritional summary. Post-meal, they could quickly log their consumption, and the Health Tracker would update their daily/weekly progress, showing visual dashboards of their intake relative to their targets.
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">3. Zomato Ordering Integration</h3>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2">Functionality:</h4>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    This feature acknowledges that even the most dedicated home cooks sometimes need a break or require ingredients not on hand. The Zomato integration will provide a seamless bridge between ReciPlan's meal planning and the convenience of food delivery.
+                </p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Contextual Ordering Links:</strong> If a user is viewing a recipe that requires a specific ingredient they lack, or if they decide at the last minute not to cook, ReciPlan could offer a direct link to Zomato to order that ingredient (if available for delivery) or to find restaurants offering similar dishes.</li>
+                    <li><strong class="font-semibold">Preference-Based Discovery:</strong> Leveraging a user's ReciPlan dietary preferences (e.g., vegetarian, gluten-free, specific cuisines), the integration can intelligently suggest relevant Zomato restaurants or dishes that align with their established tastes.</li>
+                    <li><strong class="font-semibold">Quick Switch Mechanism:</strong> A prominent "Order from Zomato" button or similar call-to-action would be available within certain contexts, allowing for a rapid transition to the Zomato app or website with pre-filled search queries.</li>
+                </ul>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2 mt-6">Benefits:</h4>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Ultimate Flexibility:</strong> Provides users with a convenient alternative when cooking isn't feasible or desired, without leaving the ReciPlan ecosystem.</li>
+                    <li><strong class="font-semibold">Time-Saving:</strong> Reduces the friction of switching between apps and manually searching for relevant food options.</li>
+                    <li><strong class="font-semibold">Enhanced Convenience:</strong> Acts as a helpful "Plan B" for mealtime, ensuring users can always find a solution for their hunger, whether it's cooking or ordering.</li>
+                    <li><strong class="font-semibold">Personalized Recommendations:</strong> Leverage ReciPlan's understanding of user preferences to suggest takeout options that genuinely appeal to them.</li>
+                </ul>
+                <h4 class="text-xl font-semibold text-gray-800 mb-2 mt-6">User Experience:</h4>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    A user browsing a recipe for, say, "Chicken Curry" might see an option pop up: "Don't have chicken? Order chicken curry from Zomato!" Or, when creating a meal plan, they could easily mark a day as "Order Out" and ReciPlan could suggest Zomato options based on their favorite cuisines or past ordered dishes. The transition would be smooth, either opening the Zomato app directly to a search result or redirecting to the Zomato website.
+                </p>
+            </div>
+
+            <div id="architecture" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 class="text-4xl font-extrabold text-gray-800 mb-4">ReciPlan Architecture: A Holistic View</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    ReciPlan is designed as a robust, scalable, and intelligent application built primarily on the <strong>Salesforce Platform</strong>, extended through <strong>external AI services</strong> and <strong>various third-party integrations</strong>. This hybrid architecture allows ReciPlan to leverage Salesforce's powerful CRM capabilities for data management and user interface while tapping into specialized AI models for complex tasks like recipe generation and multimedia recognition.
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">1. Salesforce Platform (Core Layer)</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    The Salesforce Platform forms the foundational core of ReciPlan, handling data storage, business logic, user interface, and security.
+                </p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Lightning Web Components (LWC):</strong> The primary technology for building the modern, responsive, and interactive user interface (UI) of ReciPlan. LWCs handle user interactions, display data, and send inputs.</li>
+                    <li><strong class="font-semibold">Apex (Backend Logic):</strong> Salesforce's proprietary programming language acting as the orchestrator. Apex handles data manipulation, secure communication with external APIs, and core business logic.</li>
+                    <li><strong class="font-semibold">Salesforce Objects (Data Model):</strong> Custom and standard objects used to structure and store all application-specific data, including user preferences, ingredients, recipes, and meal plans.</li>
+                    <li><strong class="font-semibold">Salesforce APIs:</strong> Enable programmatic access to Salesforce data and metadata, facilitating integrations and custom development.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">2. AI & Machine Learning Services (External Layer)</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    ReciPlan leverages specialized external AI services to perform complex intelligent tasks, maintaining a lean Salesforce footprint for heavy computation.
+                </p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li><strong class="font-semibold">Recipe Generation AI:</strong> A large language model (LLM) that takes user inputs and generates novel, coherent, and practical recipes.</li>
+                    <li><strong class="font-semibold">Image Recognition AI:</strong> Computer Vision models that process images uploaded by users to identify and list edible items.</li>
+                    <li><strong class="font-semibold">Speech-to-Text (Voice Recognition) AI:</strong> Services that transcribe spoken ingredient lists or cooking commands into text.</li>
+                    <li><strong class="font-semibold">Nutritional Analysis AI/Database:</strong> Calculates comprehensive nutritional data for generated or user-inputted recipes.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">3. Third-Party Integrations</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    ReciPlan connects with external services to provide an enriched and seamless user experience.
+                </p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                   <li><strong class="font-semibold">YouTube API:</strong> Integrates culinary video content for learning and inspiration.</li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">4. Data Flow Overview</h3>
+                <p class="mb-4 text-lg text-gray-700 leading-relaxed">
+                    User input from the LWC UI is sent to an Apex controller. Apex then orchestrates secure API calls to external AI services (for recipe generation, image/voice recognition) or third-party platforms (YOUTUBE). The processed data is returned to Apex, which updates Salesforce Objects for storage, and finally, sends the relevant information back to the LWC for display. Notifications are triggered by Apex calls to the WhatsApp API.
+                </p>
+            </div>
+
+            <div id="setup" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Setup</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">These are the steps to get ReciPlan up and running in your Salesforce org.</p>
+                <ol class="list-decimal list-inside space-y-6 mb-12">
+                    <li>
+                        <p class="text-gray-700 mb-2">Set up your environment. Follow the steps in the <a href="https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components" target="_blank" class="text-blue-600 hover:underline">Quick Start: Lightning Web Components Trailhead project</a>. The steps include:</p>
+                        <ul class="list-disc list-inside ml-6 text-gray-700 space-y-1">
+                            <li>Enable Dev Hub in your Trailhead Playground</li>
+                            <li>Install Salesforce CLI</li>
+                            <li>Install Visual Studio Code</li>
+                            <li>Install the Visual Studio Code Salesforce extensions, including the Lightning Web Components extension.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p class="text-gray-700 mb-2">If you haven't already done so, authenticate with your hub org and provide it with an alias (myhuborg) in the command below:</p>
+                        <pre><code id="setup-code-block-1">sfdx force:auth:web:login -d -a myhuborg</code><button class="copy-btn" onclick="copyCode('setup-code-block-1')">Copy</button></pre>
+                    </li>
+                    <li>
+                        <p class="text-gray-700 mb-2">Clone the ReciPlan repository:</p>
+                        <pre><code id="setup-code-block-2">git clone https://github.com/YourRepo/ReciPlan.git
+cd ReciPlan</code><button class="copy-btn" onclick="copyCode('setup-code-block-2')">Copy</button></pre>
+                    </li>
+                    <li>
+                        <p class="text-gray-700 mb-2">Create a scratch org and provide it with an alias (reciplanorg in the command below):</p>
+                        <pre><code id="setup-code-block-3">sfdx force:org:create -f config/project-scratch-def.json -a reciplanorg</code><button class="copy-btn" onclick="copyCode('setup-code-block-3')">Copy</button></pre>
+                    </li>
+                    <li>
+                        <p class="text-gray-700 mb-2">Push the app to your scratch org:</p>
+                        <pre><code id="setup-code-block-4">sfdx force:source:push</code><button class="copy-btn" onclick="copyCode('setup-code-block-4')">Copy</button></pre>
+                    </li>
+                </ol>
+            </div>
+
+         <div id="about-the-project" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 class="text-4xl font-extrabold text-gray-800 mb-4">About the Project: ReciPlan</h2>
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    ReciPlan is an innovative, open-source Salesforce application designed to be your AI-powered personal culinary assistant.
+                </p>
+                <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
+                    <li>**Core Function:** Provides personalized recipe generation using cutting-edge Artificial Intelligence.</li>
+                    <li>**Key Benefits:** Simplifies meal planning, reduces food waste by utilizing available ingredients, and inspires culinary creativity.</li>
+                    <li>**User-Centric Input:** Features intuitive multi-modal input including voice recognition and image upload for ingredients.</li>
+                    <li>**Enhanced Experience:** Offers comprehensive recipe management, detailed step-by-step instructions, and an immersive voice assistant for hands-free cooking.</li>
+                    <li>**Integrated Learning:** Connects with popular multimedia platforms like YouTube for culinary content and learning.</li>
+                    <li>**Platform & Philosophy:** Built on the robust Salesforce platform, demonstrating its extensibility beyond CRM, and is open-source to encourage community contributions and customization.</li>
+                </ul>
+            </div>
+
+            
+            <div id="faqs" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
+                <h2 class="text-4xl font-extrabold text-gray-800 mb-4">FAQs</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">Frequently asked questions and their answers will be added here.</p>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="bg-gray-800 text-white p-4 text-center">
+        <p>&copy; 2025 RECIPLAN. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentPanels = document.querySelectorAll('.content-panel');
+
+            function showPanel(id) {
+                contentPanels.forEach(panel => {
+                    panel.classList.add('hidden');
+                });
+                document.getElementById(id).classList.remove('hidden');
+            }
+
+            function setActiveLink(activeLink) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                activeLink.classList.add('active');
+            }
+
+            // Set 'Getting Started' as active and visible by default
+            const gettingStartedLink = document.querySelector('a[href="#getting-started"]');
+            if (gettingStartedLink) {
+                setActiveLink(gettingStartedLink);
+                showPanel('getting-started');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    showPanel(targetId);
+                    setActiveLink(this);
+
+                    // For sub-links, ensure parent is active too if needed
+                    let parentUl = this.closest('ul');
+                    while (parentUl && !parentUl.classList.contains('pl-4')) {
+                        parentUl = parentUl.parentElement.closest('ul');
+                    }
+                    if (parentUl && parentUl.previousElementSibling && parentUl.previousElementSibling.classList.contains('nav-link')) {
+                        setActiveLink(parentUl.previousElementSibling);
+                    }
+                });
+            });
+
+            // Function to copy code
+            window.copyCode = function(elementId) {
+                const codeElement = document.getElementById(elementId);
+                const textToCopy = codeElement.innerText;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const button = codeElement.nextElementSibling; // The copy button
+                    const originalText = button.innerText;
+                    button.innerText = 'Copied!';
+                    setTimeout(() => {
+                        button.innerText = originalText;
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+            };
+        });
+    </script>
+</body>
+</html>
