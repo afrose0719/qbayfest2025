@@ -299,7 +299,7 @@
                     ReciPlan is designed as a robust, scalable, and intelligent application built primarily on the <strong>Salesforce Platform</strong>, extended through <strong>external AI services</strong> and <strong>various third-party integrations</strong>. This hybrid architecture allows ReciPlan to leverage Salesforce's powerful CRM capabilities for data management and user interface while tapping into specialized AI models for complex tasks like recipe generation and multimedia recognition.
                 </p>
 
-                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">1. Salesforce Platform (Core Layer)</h3>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">1. Salesforce Platform (Core Layer Or System Landscape)</h3>
                 <p class="mb-4 text-lg text-gray-700 leading-relaxed">
                     The Salesforce Platform forms the foundational core of ReciPlan, handling data storage, business logic, user interface, and security.
                 </p>
@@ -309,7 +309,7 @@
                     <li><strong class="font-semibold">Salesforce Objects (Data Model):</strong> Custom and standard objects used to structure and store all application-specific data, including user preferences, ingredients, recipes, and meal plans.</li>
                     <li><strong class="font-semibold">Salesforce APIs:</strong> Enable programmatic access to Salesforce data and metadata, facilitating integrations and custom development.</li>
                 </ul>
-
+                 <img src="./images/ReciPlan_System_Landscape.png" alt="ReciPlan System Landscape" class="w-full h-auto mb-8 rounded-lg shadow-lg">
                 <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">2. AI & Machine Learning Services (External Layer)</h3>
                 <p class="mb-4 text-lg text-gray-700 leading-relaxed">
                     ReciPlan leverages specialized external AI services to perform complex intelligent tasks, maintaining a lean Salesforce footprint for heavy computation.
@@ -320,7 +320,8 @@
                     <li><strong class="font-semibold">Speech-to-Text (Voice Recognition) AI:</strong> Services that transcribe spoken ingredient lists or cooking commands into text.</li>
                     <li><strong class="font-semibold">Nutritional Analysis AI/Database:</strong> Calculates comprehensive nutritional data for generated or user-inputted recipes.</li>
                 </ul>
-
+                <img src="./images/ReciPlan_CHatGPT_Integration_Layer_Diagram.png" alt="ReciPlan AI Architecture" class="w-full h-auto mb-8 rounded-lg shadow-lg">
+               
                 <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">3. Third-Party Integrations</h3>
                 <p class="mb-4 text-lg text-gray-700 leading-relaxed">
                     ReciPlan connects with external services to provide an enriched and seamless user experience.
@@ -328,11 +329,12 @@
                 <ul class="list-disc list-inside space-y-2 mb-8 text-lg text-gray-700 leading-relaxed ml-4">
                    <li><strong class="font-semibold">YouTube API:</strong> Integrates culinary video content for learning and inspiration.</li>
                 </ul>
-
+                <img src="./images/ReciPlan_YouTube_Integration_Layer_Diagram.png" alt="ReciPlan YouTube Integration" class="w-full h-auto mb-8 rounded-lg shadow-lg">
                 <h3 class="text-2xl font-bold text-gray-900 mb-4 mt-8">4. Data Flow Overview</h3>
                 <p class="mb-4 text-lg text-gray-700 leading-relaxed">
                     User input from the LWC UI is sent to an Apex controller. Apex then orchestrates secure API calls to external AI services (for recipe generation, image/voice recognition) or third-party platforms (YOUTUBE). The processed data is returned to Apex, which updates Salesforce Objects for storage, and finally, sends the relevant information back to the LWC for display. Notifications are triggered by Apex calls to the WhatsApp API.
                 </p>
+                <img src="./images/ReciPlan_User_Flow_Diagram.png" alt="ReciPlan Data Flow Overview" class="w-full h-auto mb-8 rounded-lg shadow-lg">
             </div>
 
             <div id="setup" class="content-panel hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-xl mb-8">
